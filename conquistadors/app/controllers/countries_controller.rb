@@ -15,6 +15,8 @@ class CountriesController < ApplicationController
   # GET /countries/new
   def new
     @country = Country.new
+    @player = current_player
+
   end
 
   # GET /countries/1/edit
@@ -25,10 +27,12 @@ class CountriesController < ApplicationController
   # POST /countries.json
   def create
     @country = Country.new(country_params)
+    @player = current_player
+    @country.update(player_id: @player.id)
 
     respond_to do |format|
       if @country.save
-        format.html { redirect_to @country, notice: 'Country was successfully created.' }
+        format.html { redirect_to @player, notice: 'Country was successfully created.' }
         format.json { render :show, status: :created, location: @country }
       else
         format.html { render :new }

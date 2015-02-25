@@ -1,4 +1,4 @@
-<%= form_for(@country) do |f| %>
+<%= form_for([@player, @country]) do |f| %>
   <% if @country.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
@@ -14,10 +14,6 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.text_field :player_id %>
   </div>
   <div class="field">
     <%= f.label :flag %><br>

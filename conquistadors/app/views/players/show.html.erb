@@ -15,7 +15,14 @@
   <%= @player.email %>
 </p>
 <% if @player.country %>
-  <%= link_to 'Your Country', player_country_path(@player) %>
+  <p>
+    <strong>Country:</strong>
+    <%= @player.country.name %>
+  </p>
+<% end %>
+
+<% if @player.country %>
+  <%= link_to 'Your Country', player_country_path(@player, @country.id) %>
 <% else %>
   <%= link_to 'Create Country', new_player_country_path(@player) %>
 <% end %>
