@@ -26,6 +26,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.json
   def show
+    # @country = Country.find_by(player_id: current_player.id)
   end
 
   # GET /players/new
@@ -35,6 +36,7 @@ class PlayersController < ApplicationController
 
   # GET /players/1/edit
   def edit
+    @player = current_player
   end
 
   # POST /players

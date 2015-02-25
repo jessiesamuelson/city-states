@@ -1,6 +1,11 @@
 <h1>Editing Country</h1>
 
-<%= render 'form' %>
+<%= form_for([@player, @country]) do |form| %>
+  <%= render form %>
+  <div class="actions">
+    <%= form.submit "changing things up!" %>
+  </div>
+<% end %>
 
-<%= link_to 'Show', @country %> |
-<%= link_to 'Back', countries_path %>
+
+<%= link_to 'Back', player_country_path(@player, @country) %>

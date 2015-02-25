@@ -17,14 +17,14 @@
 <% if @player.country %>
   <p>
     <strong>Country:</strong>
-    <%= @player.country.name %>
+    <%= File.basename( @player.country.name, ".png" ).titleize %>
   </p>
 <% end %>
 
 <% if @player.country %>
-  <%= link_to 'Your Country', player_country_path(@player, @country.id) %>
+  <%= link_to 'Your Country', player_country_path(@player, @player.country.id) %>
 <% else %>
   <%= link_to 'Create Country', new_player_country_path(@player) %>
 <% end %>
-<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Edit', edit_player_path(@player.id) %> |
 <%= link_to 'Back', players_path %>

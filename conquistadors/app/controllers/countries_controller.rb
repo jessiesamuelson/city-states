@@ -21,6 +21,7 @@ class CountriesController < ApplicationController
 
   # GET /countries/1/edit
   def edit
+    @player = current_player
   end
 
   # POST /countries
@@ -29,6 +30,7 @@ class CountriesController < ApplicationController
     @country = Country.new(country_params)
     @player = current_player
     @country.update(player_id: @player.id)
+
 
     respond_to do |format|
       if @country.save
@@ -44,9 +46,10 @@ class CountriesController < ApplicationController
   # PATCH/PUT /countries/1
   # PATCH/PUT /countries/1.json
   def update
+    @player = current_player
     respond_to do |format|
       if @country.update(country_params)
-        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
+        format.html { redirect_to @player, notice: 'Country was successfully updated.' }
         format.json { render :show, status: :ok, location: @country }
       else
         format.html { render :edit }
@@ -73,6 +76,10 @@ class CountriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def country_params
-      params.require(:country).permit(:name, :player_id, :flag, :motto, :population, :employment, :tax_rate, :wealth)
+      if action_name == "index"
+        params.require(:country).permit(:name, :player_id, :flag, :motto, :employment, :tax_rate, :wealth, :population)
+      elsif action_name == "create"
+        params.require(:country).permit(:name, :player_id, :flag, :motto, :employment, :tax_rate)
+      end
     end
 end

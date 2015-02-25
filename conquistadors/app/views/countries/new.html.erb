@@ -1,5 +1,10 @@
 <h1>New Country</h1>
 
-<%= render 'form' %>
+<%= form_for([@player, @country]) do |form| %>
+  <%= render form %>
+  <div class="actions">
+    <%= form.submit "create that!!!@" %>
+  </div>
+<% end %>
 
 <%= link_to 'Back',  player_countries_path(@player)  %>

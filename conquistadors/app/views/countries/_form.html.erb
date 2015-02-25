@@ -1,45 +1,29 @@
-<%= form_for([@player, @country]) do |f| %>
-  <% if @country.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
+<% if @country.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
 
-      <ul>
-      <% @country.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :flag %><br>
-    <%= f.text_field :flag %>
-  </div>
-  <div class="field">
-    <%= f.label :motto %><br>
-    <%= f.text_field :motto %>
-  </div>
-  <div class="field">
-    <%= f.label :population %><br>
-    <%= f.number_field :population %>
-  </div>
-  <div class="field">
-    <%= f.label :employment %><br>
-    <%= f.text_field :employment %>
-  </div>
-  <div class="field">
-    <%= f.label :tax_rate %><br>
-    <%= f.text_field :tax_rate %>
-  </div>
-  <div class="field">
-    <%= f.label :wealth %><br>
-    <%= f.text_field :wealth %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+    <% @country.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="field">
+  <%= form.label :name %><br>
+  <%= form.select :name, Dir[Rails.root.join("app/assets/images/flags/*.png")].map { |flag| [File.basename(flag, ".png").titleize, File.basename(flag)]}%>
+</div>
+<div class="field">
+  <%= form.label :motto %><br>
+  <%= form.text_field :motto %>
+</div>
+<div class="field">
+  <%= form.label :employment %><br>
+  <%= form.text_field :employment %>
+</div>
+<div class="field">
+  <%= form.label :tax_rate %><br>
+  <%= form.text_field :tax_rate %>
+</div>
+

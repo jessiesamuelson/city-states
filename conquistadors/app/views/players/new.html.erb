@@ -6,6 +6,9 @@
 
             <%= form_for(@player) do |form| %>
                 <%= render form %>
+                  <div class="actions">
+                    <%= form.submit "create" %>
+                  </div>
            <% end %>
         </div>
 

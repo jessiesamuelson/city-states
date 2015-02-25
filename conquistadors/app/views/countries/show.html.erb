@@ -2,17 +2,16 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @country.name %>
+  <%= File.basename( @country.name, ".png" ).titleize %>
 </p>
 
 <p>
-  <strong>Player:</strong>
-  <%= @country.player %>
+  <strong>Ruler:</strong>
+  <%= @country.player.name %>
 </p>
 
 <p>
-  <strong>Flag:</strong>
-  <%= @country.flag %>
+  <%= image_tag "flags/" + @country.name %>
 </p>
 
 <p>
@@ -40,5 +39,5 @@
   <%= @country.wealth %>
 </p>
 
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+<%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %> |
+<%= link_to 'Back', player_path(@country.player_id) %>
