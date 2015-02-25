@@ -1,0 +1,33 @@
+<div class="container">
+    <% if notice %><div class="notice"><%= notice %></div><% end %>
+    <div class="row">
+        <div class="six columns">
+            <h1>Sign Up</h1>
+
+            <%= form_for(@player) do |form| %>
+                <%= render form %>
+           <% end %>
+        </div>
+
+        <div class="six columns">
+            <h1>Log In</h1>
+            <%= form_tag login_path, method: 'post' do |form| %>
+                <div id="players_login">
+                    <div class="row">
+                        <div class="three columns"><%= label_tag :email %></div>
+                        <div class="nine columns"><%= text_field_tag :email, params[:email], class: 'u-full-width' %></div>
+                    </div>
+                    <div class="row">
+                        <div class="three columns"><%= label_tag :password %></div>
+                        <div class="nine columns"><%= password_field_tag :password, params[:login], class: 'u-full-width' %></div>
+                    </div>
+                    <div class="row">
+                        <div class="three columns">&nbsp;</div>
+                        <div class="nine columns"><%= submit_tag 'Log In' %></div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
+</div>

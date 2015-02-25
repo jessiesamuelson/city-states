@@ -1,0 +1,49 @@
+<%= form_for(@country) do |f| %>
+  <% if @country.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@country.errors.count, "error") %> prohibited this country from being saved:</h2>
+
+      <ul>
+      <% @country.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :player_id %><br>
+    <%= f.text_field :player_id %>
+  </div>
+  <div class="field">
+    <%= f.label :flag %><br>
+    <%= f.text_field :flag %>
+  </div>
+  <div class="field">
+    <%= f.label :motto %><br>
+    <%= f.text_field :motto %>
+  </div>
+  <div class="field">
+    <%= f.label :population %><br>
+    <%= f.number_field :population %>
+  </div>
+  <div class="field">
+    <%= f.label :employment %><br>
+    <%= f.text_field :employment %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_rate %><br>
+    <%= f.text_field :tax_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :wealth %><br>
+    <%= f.text_field :wealth %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
