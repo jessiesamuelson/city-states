@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :trade_deals
+
   # get '/blah' => 'static#blah'
   root to: 'static#index'
 

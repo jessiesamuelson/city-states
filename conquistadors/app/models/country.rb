@@ -4,6 +4,9 @@ class Country < ActiveRecord::Base
   has_many :resources, through: :country_resources
 
   # Add validation...employment,tax_rate cannot be more than 100 
+  validates :employment, numericality: {less_than: 100}
+  validates :tax_rate, numericality: {less_than: 100}
+
 
   # Active Record Callbacks!!
   before_create :set_population_and_wealth 

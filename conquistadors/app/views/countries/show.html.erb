@@ -46,6 +46,7 @@
   <% end %>
 </ul>
 
-
-<%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %> |
+<% if @country.player_id == current_player.id %>
+  <%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %>
+<% end %>
 <%= link_to 'Back', player_path(@country.player_id) %>

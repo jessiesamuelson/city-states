@@ -12,9 +12,13 @@ class PlayersController < ApplicationController
     @player = Player.find_by_email(params[:email])
     if @player && @player.authenticate(params[:password])
       session[:player_id] = @player.id
-      redirect_to @player
+      if @player.country
+        redirect_to player_country_path(@player, @player.country.id)
+      else
+        redirect_to new_player_country_path(@player)
+      end
     else
-      redirect_to new_player_path, notice: 'Invalid Login'
+      render :new, notice: 'Invalid Login'
     end
   end
 

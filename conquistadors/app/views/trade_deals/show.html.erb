@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @trade_deal.player %>
+</p>
+
+<p>
+  <strong>Country resource:</strong>
+  <%= @trade_deal.country_resource %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @trade_deal.cost %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @trade_deal.quantity %>
+</p>
+
+<p>
+  <strong>Agreed:</strong>
+  <%= @trade_deal.agreed %>
+</p>
+
+<%= link_to 'Edit', edit_trade_deal_path(@trade_deal) %> |
+<%= link_to 'Back', trade_deals_path %>
