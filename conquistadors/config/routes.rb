@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # get '/blah' => 'static#blah'
+  root to: 'static#index'
 
   # resources :countries
 
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
     resources :countries
   end
 
-  root to: 'static#index'
+  
 
 end

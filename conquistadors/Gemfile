@@ -32,10 +32,13 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+source 'http://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
   gem 'byebug'
   gem 'pry-rails'
   # Access an IRB console on exception pages or by using <%= console %> in views

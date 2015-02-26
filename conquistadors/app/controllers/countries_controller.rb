@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
+  before_action :set_country, only: [:edit, :update, :destroy]
 
   # GET /countries
   # GET /countries.json
@@ -10,6 +11,7 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.json
   def show
+    @country = Country.find(params[:id])
   end
 
   # GET /countries/new
