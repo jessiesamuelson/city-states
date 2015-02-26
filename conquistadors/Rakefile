@@ -3,4 +3,39 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+
+
+
 Rails.application.load_tasks
+
+namespace :country do 
+
+  desc "Apply effects of resources to population"
+  task :flourish => :environment do 
+    Country.all.each do |c|
+      resources = c.resources
+      growth_factor_product = 1
+        resources.each do |r|
+          growth_factor_product *= r.growth_factor
+        end
+      c.population += c.population * c.employment * growth_factor_product
+      c.update(population: c.population) 
+    end
+  end
+
+  desc "A plague on your lands"
+  task :plague => :environment do
+    Country.all.each do |c|
+      c.population *= rand(95..100)/100.0
+      c.update(population: c.population)
+    end
+  end
+
+  desc "This money will not be mismanaged"
+  task :moneygrab => :environment do
+    Country.all.each do |c|
+      c.wealth += (c.population * (1 - (c.employment/100.0)) * (c.tax_rate/100.0))
+      c.update(wealth: c.wealth)
+    end
+  end
+end

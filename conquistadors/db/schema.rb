@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225211813) do
+ActiveRecord::Schema.define(version: 20150226003915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20150225211813) do
 
   add_index "countries", ["player_id"], name: "index_countries_on_player_id", using: :btree
 
+  create_table "country_resources", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "resource_id"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "country_resources", ["country_id"], name: "index_country_resources_on_country_id", using: :btree
+  add_index "country_resources", ["resource_id"], name: "index_country_resources_on_resource_id", using: :btree
+
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.string   "title"
@@ -49,4 +60,6 @@ ActiveRecord::Schema.define(version: 20150225211813) do
   end
 
   add_foreign_key "countries", "players"
+  add_foreign_key "country_resources", "countries"
+  add_foreign_key "country_resources", "resources"
 end

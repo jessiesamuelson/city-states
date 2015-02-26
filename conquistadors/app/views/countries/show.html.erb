@@ -39,5 +39,13 @@
   <%= @country.wealth %>
 </p>
 
+<strong>Resources</strong>
+<ul>
+  <% @country.resources.each do |r| %>
+    <li><%= r.name %>, Growth rate: <%= r.growth_factor %>, Exchange rate: <%= r.exchange_rate %></li>
+  <% end %>
+</ul>
+
+
 <%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %> |
 <%= link_to 'Back', player_path(@country.player_id) %>
