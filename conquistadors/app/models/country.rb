@@ -23,5 +23,11 @@ class Country < ActiveRecord::Base
       assignment = self.country_resources.new({resource_id: resource.id})
       assignment.save
     end 
+    self.country_resources.each do |cr|
+      cr.quantity = rand(10..30)
+      cr.save
+    end
   end  
+
+
 end

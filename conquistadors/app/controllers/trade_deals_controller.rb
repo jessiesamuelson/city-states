@@ -15,6 +15,8 @@ class TradeDealsController < ApplicationController
   # GET /trade_deals/new
   def new
     @trade_deal = TradeDeal.new
+    @trade_deal.player_id = current_player
+    @trade_deal.save
   end
 
   # GET /trade_deals/1/edit

@@ -41,8 +41,8 @@
 
 <strong>Resources</strong>
 <ul>
-  <% @country.resources.each do |r| %>
-    <li><%= r.name %>, Growth rate: <%= r.growth_factor %>, Exchange rate: <%= r.exchange_rate %></li>
+  <% @country.country_resources.each do |r| %>
+    <li><%=r.quantity%> <%=Resource.find(r.resource_id).name %>, Growth rate: <%= Resource.find(r.resource_id).growth_factor %>, Exchange rate: <%= Resource.find(r.resource_id).exchange_rate %></li>
   <% end %>
 </ul>
 

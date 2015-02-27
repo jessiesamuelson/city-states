@@ -1,6 +1,19 @@
 <h1>Editing Trade Deal</h1>
 
-<%= render 'form' %>
+<%= form_for(@trade_deal) do |form| %>
+<%= render form %>
+ <!-- This boolean is only avaiable to the player whose country owns this resource! -->
+  <% if Player.find_by_trade_deal(@trade_deal) ==current_player %>
+  <div class="field">
+    <%= form.label :agreed %><br>
+    <%= form.check_box :agreed %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @trade_deal %> |
 <%= link_to 'Back', trade_deals_path %>
