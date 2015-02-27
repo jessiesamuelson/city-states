@@ -1,37 +1,24 @@
-<%= form_for(@trade_deal) do |f| %>
   <% if @trade_deal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@trade_deal.errors.count, "error") %> prohibited this trade_deal from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@trade_deal.errors.count, "error") %> prohibited this trade_deal from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @trade_deal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.text_field :player_id %>
+    <%= form.label :country_resource_id %><br>
+    <%= form.select :country_resource_id, CountryResource.all.collect { |r| [Resource.find(r.resource_id).name + ' from ' + Country.find(r.country_id).name.titleize, r.id]} %>
   </div>
   <div class="field">
-    <%= f.label :country_resource_id %><br>
-    <%= f.text_field :country_resource_id %>
+    <%= form.label :quantity %><br>
+    <%= form.text_field :quantity %>
   </div>
-  <div class="field">
-    <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
+  <div id="calculated-cost" class="field">
+    Calculated Cost Should Go Here
   </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :agreed %><br>
-    <%= f.check_box :agreed %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
