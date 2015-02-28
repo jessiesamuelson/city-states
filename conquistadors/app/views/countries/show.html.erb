@@ -42,9 +42,17 @@
 <strong>Resources</strong>
 <ul>
   <% @country.country_resources.each do |r| %>
-    <li><%=r.quantity%> <%=Resource.find(r.resource_id).name %>, Growth rate: <%= Resource.find(r.resource_id).growth_factor %>, Exchange rate: <%= Resource.find(r.resource_id).exchange_rate %></li>
+  <li><%=r.quantity%> <%=Resource.find(r.resource_id).name %>, Growth rate: <%= Resource.find(r.resource_id).growth_factor %>, Exchange rate: <%= Resource.find(r.resource_id).exchange_rate %></li>
   <% end %>
 </ul>
+
+<% @country.country_resources.each do |cr| %>
+  <% if cr.trade_deals.any? %>
+    <% cr.trade_deals.each do |deal| %>
+      <%= link_to "Offer from #{deal.player.name}", edit_trade_deal_path(deal) %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <% if @country.player_id == current_player.id %>
   <%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %>

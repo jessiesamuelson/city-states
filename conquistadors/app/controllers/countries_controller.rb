@@ -74,7 +74,7 @@ class CountriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_country
-      @country = current_player.countries.find(params[:id])
+      @country = current_player.country
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
