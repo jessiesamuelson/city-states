@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Player</th>
-      <th>Country resource</th>
+      <th>Buyer</th>
+      <th>Seller</th>
+      <th>Resource</th>
       <th>Cost</th>
       <th>Quantity</th>
       <th>Agreed</th>
@@ -17,8 +18,9 @@
   <tbody>
     <% @trade_deals.each do |trade_deal| %>
       <tr>
-        <td><%= trade_deal.player %></td>
-        <td><%= trade_deal.country_resource %></td>
+        <td><%= trade_deal.player.name %></td>
+        <td><%= trade_deal.country_resource.country.player.name %></td>
+        <td><%= trade_deal.country_resource.resource.name %></td>
         <td><%= trade_deal.cost %></td>
         <td><%= trade_deal.quantity %></td>
         <td><%= trade_deal.agreed %></td>
