@@ -27,12 +27,14 @@ class TradeDealsController < ApplicationController
   # POST /trade_deals.json
   def create
     @trade_deal = TradeDeal.new(trade_deal_params)
-
+    @player = current_player
+    @trade_deal.update(player_id: @player.id)
     respond_to do |format|
       if @trade_deal.save
         format.html { redirect_to @trade_deal, notice: 'Trade deal was successfully created.' }
         format.json { render :show, status: :created, location: @trade_deal }
       else
+        binding.pry
         format.html { render :new }
         format.json { render json: @trade_deal.errors, status: :unprocessable_entity }
       end
