@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Player:</strong>
-  <%= @trade_deal.player %>
+  <strong>Buyer:</strong>
+  <%= @trade_deal.player.name %>
 </p>
 
 <p>
-  <strong>Country resource:</strong>
-  <%= @trade_deal.country_resource %>
+  <strong>Seller:</strong>
+  <%= @trade_deal.country_resource.country.player.name %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @trade_deal.country_resource.resource.name %>
 </p>
 
 <p>

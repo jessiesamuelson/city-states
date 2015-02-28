@@ -16,7 +16,6 @@ class TradeDealsController < ApplicationController
   def new
     @trade_deal = TradeDeal.new
     @trade_deal.player_id = current_player
-    @trade_deal.save
   end
 
   # GET /trade_deals/1/edit
@@ -27,6 +26,7 @@ class TradeDealsController < ApplicationController
   # POST /trade_deals.json
   def create
     @trade_deal = TradeDeal.new(trade_deal_params)
+    @trade_deal.player_id = current_player.id
 
     respond_to do |format|
       if @trade_deal.save
@@ -73,4 +73,4 @@ class TradeDealsController < ApplicationController
     def trade_deal_params
       params.require(:trade_deal).permit(:player_id, :country_resource_id, :cost, :quantity, :agreed)
     end
-end
+  end
