@@ -49,10 +49,11 @@
 <% @country.country_resources.each do |cr| %>
   <% if cr.trade_deals.any? %>
     <% cr.trade_deals.each do |deal| %>
-      <%= link_to "Offer from #{deal.player.name}", edit_trade_deal_path(deal) %>
+      <%= link_to "Offer from #{deal.player.name} to buy #{deal.quantity} #{deal.country_resource.resource.name} for #{deal.cost} Wealth", edit_trade_deal_path(deal) %>
     <% end %>
   <% end %>
 <% end %>
+<br>
 
 <% if @country.player_id == current_player.id %>
   <%= link_to 'Edit', edit_player_country_path(@country.player_id, @country.id) %>

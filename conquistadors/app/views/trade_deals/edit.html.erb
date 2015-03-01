@@ -1,19 +1,27 @@
+
+
+
 <h1>Editing Trade Deal</h1>
+
+<p>Offer from <%=@trade_deal.player.name %> to buy <%=@trade_deal.quantity %> <%=@trade_deal.country_resource.resource.name %> for <%=@trade_deal.cost %> Wealth</p>
 
 <%= form_for(@trade_deal) do |form| %>
 <%= render form %>
- <!-- This boolean is only avaiable to the player whose country owns this resource! -->
-  <% if Player.find_by_trade_deal(@trade_deal) == current_player %>
-  <div class="field">
-    <%= form.label :agreed %><br>
-    <%= form.check_box :agreed %>
-  </div>
-  <% end %>
+<!-- This boolean is only avaiable to the player whose country owns this resource! -->
+<% if Player.find_by_trade_deal(@trade_deal) == current_player %>
+<div class="field">
+  <%= radio_button('trade_deal','agreed', true) %>
+  <%= label_tag(:agreed_agree, "Agree") %>
+  <%= radio_button('trade_deal','agreed', false) %>
+  <%= label_tag(:agreed_decline, "Decline") %>
+</div>
+<% end %>
 
-  <div class="actions">
-    <%= form.submit "Update Trade Deal!"%>
-  </div>
+<div class="actions">
+  <%= form.submit "Update Trade Deal!"%>
+</div>
 <% end %>
 
 <%= link_to 'Show', @trade_deal %> |
 <%= link_to 'Back', trade_deals_path %>
+
