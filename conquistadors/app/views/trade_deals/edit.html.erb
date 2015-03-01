@@ -8,7 +8,7 @@
 <%= form_for(@trade_deal) do |form| %>
 <%= render form %>
 <!-- This boolean is only avaiable to the player whose country owns this resource! -->
-<% if Player.find_by_trade_deal(@trade_deal) == current_player %>
+<% if Player.find_by_trade_deal(@trade_deal) == current_player%>
 <div class="field">
   <%= radio_button('trade_deal','agreed', true) %>
   <%= label_tag(:agreed_agree, "Agree") %>

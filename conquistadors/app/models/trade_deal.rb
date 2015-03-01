@@ -47,4 +47,10 @@ class TradeDeal < ActiveRecord::Base
     buyer.save
     seller.save
   end
+
+  def decline_trade
+    if !self.agreed
+      self.destroy
+    end
+  end
 end
