@@ -19,7 +19,7 @@
         <td><%= player.title %></td>
         <% if player.country %>
         <!-- remove png from country name listing -->
-          <td><%= link_to player.country.name, player_country_path(player, player.country) %></td>
+          <td><%= link_to player.country.name.split('.')[0], player_country_path(player, player.country) %></td>
         <% end %>
 
         <% if player == current_player %>

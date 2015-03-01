@@ -10,12 +10,7 @@ class TradeDeal < ActiveRecord::Base
 
   # all trade deals begin as false and the creator cannot modify 'agreed' boolean 
   def set_agreed_to_false
-<<<<<<< HEAD
-    self.agreed = false
-    return true
-=======
     self.agreed = nil
->>>>>>> e3211766402fe7631521481db4366b952176dc3f
   end
 
   def enact_trade

@@ -26,13 +26,7 @@ class TradeDealsController < ApplicationController
   # POST /trade_deals.json
   def create
     @trade_deal = TradeDeal.new(trade_deal_params)
-<<<<<<< HEAD
-    @player = current_player
-    @trade_deal.update(player_id: @player.id)
-=======
     @trade_deal.player_id = current_player.id
-
->>>>>>> e3211766402fe7631521481db4366b952176dc3f
     respond_to do |format|
       if @trade_deal.save
         format.html { redirect_to @trade_deal, notice: 'Trade deal was successfully created.' }
