@@ -27,13 +27,15 @@ class TradeDealsController < ApplicationController
   def create
     @trade_deal = TradeDeal.new(trade_deal_params)
     @trade_deal.player_id = current_player.id
+    if current_player.country.wealth > @trade_deal.cost
+      @trade_deal.save
+    end
     respond_to do |format|
       if @trade_deal.save
         format.html { redirect_to @trade_deal, notice: 'Trade deal was successfully created.' }
         format.json { render :show, status: :created, location: @trade_deal }
       else
-        binding.pry
-        format.html { render :new }
+        format.html { render :new, notice: 'Not enough country wealth' }
         format.json { render json: @trade_deal.errors, status: :unprocessable_entity }
       end
     end

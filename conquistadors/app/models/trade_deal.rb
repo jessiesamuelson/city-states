@@ -14,13 +14,11 @@ class TradeDeal < ActiveRecord::Base
   end
 
   def enact_trade
+    # binding.pry
+    buyer = self.player.country
+    seller = self.country_resource.country
 
     if self.agreed 
-
-      buyer = self.player.country
-      seller = self.country_resource.country
-
-      
 
       # Money exchanges occur before exchange of goods
       buyer.wealth -= self.cost
